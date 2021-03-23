@@ -10,10 +10,10 @@ class SearchScreen extends Screen {
   final VoidCallback onTapSubmit;
 
   SearchScreen(
-      {this.viewModel,
-      this.onChangedArtistName,
-      this.onChangedSongTitle,
-      this.onTapSubmit});
+      {@required this.viewModel,
+      @required this.onChangedArtistName,
+      @required this.onChangedSongTitle,
+      @required this.onTapSubmit});
 
   TextEditingController _songController = TextEditingController();
   TextEditingController _artistController = TextEditingController();
@@ -58,8 +58,11 @@ class SearchScreen extends Screen {
             Container(
               padding: EdgeInsets.fromLTRB(0.0, 16.0, 0.0, 0.0),
               child: ElevatedButton(
+                clipBehavior: Clip.hardEdge,
                 child: Text('Submit'),
-                onPressed: onTapSubmit,
+                onPressed: () {
+                  return onTapSubmit;
+                },
               ),
             ),
           ],
@@ -77,6 +80,7 @@ class SearchScreen extends Screen {
       Function onChangeTextField}) {
     return TextFormField(
       key: key,
+      enableInteractiveSelection: false,
       keyboardType: textInputType,
       controller: controller,
       textInputAction: TextInputAction.next,

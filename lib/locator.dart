@@ -9,8 +9,8 @@ class ExampleLocator implements Locator {
   ExampleLocator._();
 
   factory ExampleLocator() {
-    Locator.instance ??= ExampleLocator._();
-    return Locator.instance;
+    Locator.init(ExampleLocator._());
+    return Locator.getInstance();
   }
 
   @override
